@@ -1,0 +1,17 @@
+package nofmterrorf
+
+// The file uses fmt only through an alias and only for Errorf, and does not
+// import errforge: the fix adds the errforge import once for the whole file,
+// and the driver drops the fmt import the rewrite leaves unused.
+
+import (
+	"github.com/grandper/go-errforge/errforge"
+)
+
+func aliased() error {
+	return errforge.New("an error occurred") // want `do not use fmt.Errorf: use errforge\.New$`
+}
+
+func aliasedWrap(err error) error {
+	return errforge.Wrap("closing", err) // want `do not use fmt.Errorf: use errforge\.Wrap$`
+}

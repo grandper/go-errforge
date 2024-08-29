@@ -1,0 +1,18 @@
+package noerrors
+
+// An alias, a dot import, and errforge already imported under its own alias:
+// the rewrite uses that alias and the driver drops both errors imports.
+
+import (
+	ef "github.com/grandper/go-errforge/errforge"
+)
+
+var ErrB = ef.New("b") // want `do not use the errors package: use ef\.New$`
+
+func isB(err error) bool {
+	return ef.Is(err, ErrB) // want `do not use the errors package: use ef\.Is$`
+}
+
+func keepsErrforge() error {
+	return ef.New("already converted")
+}

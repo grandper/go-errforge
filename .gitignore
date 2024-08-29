@@ -1,0 +1,19 @@
+# JetBrains IDEs (IntelliJ, GoLand, ...)
+.idea/
+*.iml
+
+# Go build & test artifacts
+*.exe
+*.test
+*.out
+coverage.out
+coverage.txt
+
+# Editor / OS cruft
+.vscode/
+.DS_Store
+_supporting_files_/
+
+# AI
+.claude/
+.claude-plugin
